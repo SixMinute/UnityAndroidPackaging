@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">My Library</string>
+    <string name="res_to_replace">IF THIS SHOWS THINGS ARE WRONG!</string>
+</resources>

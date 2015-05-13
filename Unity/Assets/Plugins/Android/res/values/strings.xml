@@ -1,0 +1,4 @@
+<resources>
+    <string name="res_to_replace">has been replaced by unity</string>
+    <string name="res_to_check">just some text to make sure this will work</string>
+</resources>

@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        minSdkVersion 96
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.3'
+}
+
+task copyAAR(type: Copy) {
+    from('build/outputs/aar')
+    into('../aarapplication/libs')
+    include(project.name + '-debug.aar')
+}
+
+task copyAARToUnity(type: Copy) {
+    from('build/outputs/aar')
+    into('../Unity/Assets/Plugins/Android')
+    include(project.name + '-debug.aar')
+}
+
+copyAAR.finalizedBy copyAARToUnity
+assembleDebug.finalizedBy copyAAR
